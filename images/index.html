@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Francis — Product Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --navy: #1A3A5C;
+    --mid: #6B7280;
+    --rule: #E5E7EB;
+    --bg-soft: #F8F9FA;
+    --white: #FFFFFF;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--black);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 160px 40px 100px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero-headline {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    color: var(--black);
+    max-width: 820px;
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    font-style: normal;
+    color: var(--navy);
+  }
+
+  .hero-body {
+    font-size: 19px;
+    line-height: 1.65;
+    color: #444;
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 32px 0;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+
+  .strip-stat {
+    flex: 1;
+    min-width: 160px;
+    padding-right: 40px;
+  }
+
+  .strip-stat + .strip-stat {
+    padding-left: 40px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .strip-num {
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--black);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .strip-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  /* ── CASE STUDIES SECTION ── */
+  .case-studies {
+    padding: 80px 40px 120px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    padding: 48px 44px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-soft);
+  }
+
+  .card:hover .card-arrow {
+    transform: translate(4px, -4px);
+  }
+
+  .card-top {}
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .card-company {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .card-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--rule);
+    border-radius: 50%;
+  }
+
+  .card-year {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--mid);
+  }
+
+  .card-title {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+  }
+
+  .card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .card-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid var(--rule);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .card-arrow {
+    font-size: 18px;
+    color: var(--navy);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 16px;
+    line-height: 1;
+  }
+
+  /* ── PLACEHOLDER CARD ── */
+  .card--placeholder {
+    background: var(--bg-soft);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .card--placeholder:hover {
+    background: var(--bg-soft);
+  }
+
+  .card--placeholder .card-title {
+    color: #bbb;
+  }
+
+  .card--placeholder .card-desc {
+    color: #ccc;
+  }
+
+  .card--placeholder .card-company {
+    color: #ccc;
+  }
+
+  .placeholder-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #bbb;
+    border: 1px dashed #ddd;
+    padding: 4px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    border-top: 1px solid var(--rule);
+    padding: 80px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-left h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .about-left p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 16px;
+  }
+
+  .about-left p:last-child { margin-bottom: 0; }
+
+  .about-right {
+    padding-top: 4px;
+  }
+
+  .about-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-list li {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+  }
+
+  .about-list li:first-child { border-top: 1px solid var(--rule); }
+
+  .about-list-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding-top: 2px;
+  }
+
+  .about-list-value {
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADSHOT PLACEHOLDER ── */
+  .headshot-placeholder {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1px dashed var(--rule);
+    background: var(--bg-soft);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headshot-placeholder svg {
+    width: 28px;
+    height: 28px;
+    color: #ccc;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .footer-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--black); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+
+    .hero { padding: 120px 24px 72px; }
+
+    .stats-strip { gap: 24px; }
+
+    .strip-stat {
+      padding-right: 0;
+      min-width: 120px;
+    }
+
+    .strip-stat + .strip-stat {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .case-studies { padding: 64px 24px 80px; }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card { min-height: auto; padding: 36px 28px; }
+
+    .about-strip {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 64px 24px;
+    }
+
+    .about-list li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 32px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-name">James Francis</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:james.francis@trailmarkops.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <span class="hero-eyebrow">Product Marketing Portfolio</span>
+  <h1 class="hero-headline">I turn <em>complex products</em> into clear stories.</h1>
+  <p class="hero-body">I work at the intersection of technical depth and strategic clarity — finding the language that makes hard-to-categorize products click for the people who need them most.</p>
+
+  <div class="stats-strip">
+    <div class="strip-stat">
+      <span class="strip-num">3×</span>
+      <span class="strip-label">Revenue growth driven on a single product repositioning</span>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-num">80%+</span>
+      <span class="strip-label">Close rate signal that identified a positioning gap</span>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-num">&lt;6 mo</span>
+      <span class="strip-label">From diagnosis to full-channel execution</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section class="case-studies" id="work">
+  <span class="section-label">Case Studies</span>
+
+  <div class="card-grid">
+
+    <!-- Card 1 — M81 (live) -->
+    <a href="m81-case-study.html" class="card">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="card-company">Lake Shore Cryotronics</span>
+          <span class="card-dot"></span>
+          <span class="card-year">2024–25</span>
+        </div>
+        <h2 class="card-title">Giving customers the language to understand a product that didn't exist yet.</h2>
+        <p class="card-desc">The M81-SSM was closing at 80%+ after in-person demos but stalling in the market. Customers couldn't categorize it, so they couldn't see why it was better. I identified the positioning gap, developed "Beyond the lock-in / Beyond the SMU," and executed a full-channel overhaul that put the product on track for 3× revenue growth.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="card-tag">Positioning</span>
+          <span class="card-tag">Messaging</span>
+          <span class="card-tag">Go-to-market</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- Card 2 — Placeholder -->
+    <div class="card card--placeholder">
+      <div class="card-top">
+        <span class="placeholder-badge">Coming soon</span>
+        <div class="card-meta">
+          <span class="card-company">Lake Shore Cryotronics</span>
+        </div>
+        <h2 class="card-title">Case study title</h2>
+        <p class="card-desc">A second case study will appear here. Leave this as a placeholder until the next project is ready to publish.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="card-tag">Category</span>
+          <span class="card-tag">Category</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 — Placeholder -->
+    <div class="card card--placeholder">
+      <div class="card-top">
+        <span class="placeholder-badge">Coming soon</span>
+        <div class="card-meta">
+          <span class="card-company">Company</span>
+        </div>
+        <h2 class="card-title">Case study title</h2>
+        <p class="card-desc">A third case study will appear here.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="card-tag">Category</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 — Placeholder -->
+    <div class="card card--placeholder">
+      <div class="card-top">
+        <span class="placeholder-badge">Coming soon</span>
+        <div class="card-meta">
+          <span class="card-company">Company</span>
+        </div>
+        <h2 class="card-title">Case study title</h2>
+        <p class="card-desc">A fourth case study will appear here.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-tags">
+          <span class="card-tag">Category</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-strip" id="about">
+  <div class="about-left">
+
+    <!-- Headshot placeholder — remove this div when you add a real photo -->
+    <div class="headshot-placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </div>
+
+    <h2>Technical products need translators, not just marketers.</h2>
+    <p>I've spent my career inside technical organizations — understanding products at the engineering level and finding the language that makes them land with the people who need them. I don't hand off to copywriters. I write the copy, build the creative, and own the outcome.</p>
+    <p>My background in design means I think visually about positioning — the hierarchy of a product page, the weight a headline carries, the moment a layout makes an argument. That lens changes how I approach messaging strategy.</p>
+  </div>
+
+  <div class="about-right">
+    <ul class="about-list">
+      <li>
+        <span class="about-list-label">Current role</span>
+        <span class="about-list-value">Sr. Multimedia Developer, Lake Shore Cryotronics (acting as Technical Product Marketer)</span>
+      </li>
+      <li>
+        <span class="about-list-label">Domain</span>
+        <span class="about-list-value">Scientific instruments, B2B technical products, deep tech</span>
+      </li>
+      <li>
+        <span class="about-list-label">Specialties</span>
+        <span class="about-list-value">Product positioning, messaging strategy, go-to-market execution, technical copywriting</span>
+      </li>
+      <li>
+        <span class="about-list-label">Location</span>
+        <span class="about-list-value">Columbus, Ohio</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-name">James Francis</span>
+  <ul class="footer-links">
+    <li><a href="https://linkedin.com/in/" target="_blank">LinkedIn</a></li>
+    <li><a href="mailto:james.francis@trailmarkops.com">Email</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
